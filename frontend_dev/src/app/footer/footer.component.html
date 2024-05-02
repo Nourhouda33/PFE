@@ -1,0 +1,74 @@
+<footer class="footer bg-dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-12 mb-0 mb-md-4 pb-0 pb-md-2">
+                <a href="#" class="logo-footer">
+                    <img src="assets/images/logo-light.png" height="24" alt="">
+                </a>
+                <p class="mt-4 text-white-50">Notre société favorise un environnement de travail collaboratif où l'échange d'idées et la coopération sont encouragés pour stimuler l'innovation et la créativité..</p>
+               
+               <div class="mt-3">
+                    <ul>
+                        <li class="list-inline-item mb-0"><a href="#" ><img src="../assets/images/logos/facebook.png" style="width: 30px;"></a></li>
+                        <li class="list-inline-item mb-0"><a href="#" ><img src="../assets/images/logos/instagram.png" style="width: 30px;"></a></li>
+
+                        <li class="list-inline-item mb-0"><a href="#"><img src="../assets/images/logos/twitter.png" style="width: 30px;"></a></li>
+
+                        <li class="list-inline-item mb-0"><a href="#" ><img src="../assets/images/logos/linkedin.png" style="width: 30px;"></a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0" ></div>
+
+            <!--end col-->
+
+            <div class="col-lg-2 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                <h4 class="text-light footer-head">Societé</h4>
+                <ul class="list-unstyled footer-list mt-4">
+                    <li><a href="/about" class="text-foot fs-6"><i class="mdi mdi-chevron-right"></i> Qui Somme Nous</a></li>
+                    <li><a href="/Service" class="text-foot fs-6"><i class="mdi mdi-chevron-right"></i> Services</a></li>
+                    <li><a href="#" class="text-foot fs-6"><i class="mdi mdi-chevron-right"></i> Equipe</a></li>
+                    <li><a href="/Contact" class="text-foot fs-6"><i class="mdi mdi-chevron-right"></i> Contact</a></li>
+                    <li><a href="#" class="text-foot fs-6"><i class="mdi mdi-chevron-right"></i> Fonctionnalités</a></li>
+                </ul>
+            </div>
+            <!--end col-->
+
+        
+            <!--end col-->
+
+            <div class="col-lg-3 col-md-4 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0" >
+                <h4 class="text-light fw-normal footer-head mb-4">CollabPro </h4>
+                <ul class="list-unstyled footer-list" *ngFor="let admin of listadmin">
+                    <li class="fs-6"><i class="mdi mdi-map-marker me-2" ></i> {{admin.adresse}}</li>
+                    <li class="fs-6"><i class="mdi mdi-email me-2"></i> {{admin.email}}</li>
+                    <li class="fs-6"><i class="mdi mdi-phone me-2"></i>{{admin.phone}}</li>
+                
+                </ul>
+               
+            </div>
+            <!--end col-->
+        </div>
+        <!--end row-->
+    </div>
+    <!--end container-->
+</footer>
+<!--end footer-->
+
+<footer class="footer footer-bar bg-dark border-top">
+    <div class="container text-center">
+        <div class="row align-items-center">
+            <div class="col-sm-6">
+                <div class="text-sm-start">
+                    <p class="mb-0">© <script>
+                            document.write(new Date().getFullYear())
+                        </script> CollabPro <i class="mdi mdi-heart text-danger"></i> by <a
+                            href="https://shreethemes.in/" target="_blank" class="text-reset">Islem nasser et Nour jarboui</a>.</p>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+    <!--end container-->
+</footer>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from shreethemes.in/bizcell/layouts/page-contact-one.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Mar 2024 22:36:40 GMT -->
+<head>
+    <meta charset="utf-8" />
+    <title>Bizcell - Landing Page Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Premium Bootstrap 5 Landing Page Template" />
+    <meta name="keywords" content="bootstrap 5, premium, marketing, multipurpose" />
+    <meta name="author" content="Shreethemes" />
+    <meta name="website" content="https://shreethemes.in/" />
+    <meta name="email" content="support@shreethemes.in" />
+    <meta name="version" content="1.0.0" />
+
+
+</head>
+
+<body>
+
+     <!-- Navbar STart -->
+     <app-header></app-header>
+    <!--end header-->
+    <!-- Navbar End -->
+
+    <!-- Start Home -->
+    <section class="bg-default page-next-level" style="background: url(assets/images/bg/bg-page.png) center no-repeat;">
+        <div class="home-center">
+            <div class="home-desc-center">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-12">
+                            <div class="text-center">
+                                <h3 class="title-pager mb-0"> Contact </h3>
+                            </div>
+                            <ul class="page-next text-center mt-4 pt-2">
+                                <li><a href="/" class="text-dark fs-6">CollabPro</a></li> 
+                                <li>
+                                    <span class="text-primary fs-6">Contact</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--end col-->
+                    </div>
+                    <!--end row-->
+                </div>
+                <!--end container-->
+            </div>
+        </div>
+    </section>
+    <!--end section-->
+    <!-- End Home -->
+
+
+    <!-- contact START -->
+    <section class="section pb-0">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 col-md-6 pt-2 pt-sm-0">
+                    <div class="card shadow rounded border-0 p-2">
+                        <div class="card-body">
+                            <div class="primary-form mt-3">
+                                <form method="post" id="myForm" name="myForm" (ngSubmit)="AddContact()" [formGroup]="ContactForm">
+                                    <p class="mb-0" id="error-msg"></p>
+                                    <div id="simple-msg"></div>
+                                    <div class="row">
+                                        <div class="col-12 mb-3">
+                                            <h4 class="">Get In Touch !</h4>
+                                            
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label fs-6 mt-3 mb-1">Votre Nom:<span
+                                                    class="text-danger">*</span></label>
+                                            <div class="form-icon position-relative">
+                                                <i class="mdi mdi-account icon-sm icons"></i>
+                                                <input name="name" formControlName="nom" id="name" type="text" class="form-control ps-5 fs-6"
+                                                    placeholder="Nom :">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label fs-6 mt-3 mb-1">Votre Prenom:<span
+                                                    class="text-danger">*</span></label>
+                                            <div class="form-icon position-relative">
+                                                <i class="mdi mdi-account icon-sm icons"></i>
+                                                <input  formControlName="prenom" id="name" type="text" class="form-control ps-5 fs-6"
+                                                    placeholder="Prenom :">
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-6">
+
+                                            <label class="form-label fs-6 mt-3 mb-1">Votre Email: <span
+                                                    class="text-danger">*</span></label>
+                                            <div class="form-icon position-relative">
+                                                <i class="mdi mdi-email-outline icon-sm icons"></i>
+                                                <input name="email" formControlName="email" id="email" type="email"
+                                                    class="form-control ps-5 fs-6" placeholder="Email :">
+                                            </div>
+
+                                        </div>
+                                        <!--end col-->
+
+                                        <div class="col-12">
+                                            <label class="form-label fs-6 mt-3 mb-1">Sujet</label>
+                                            <div class="form-icon position-relative">
+                                                <i class="mdi mdi-book-outline icon-sm icons"></i>
+                                                <input name="subject" id="subject"  formControlName="sujet" class="form-control ps-5 fs-6"
+                                                    placeholder="sujet :">
+                                            </div>
+                                        </div>
+                                        <!--end col-->
+                                        <div class="col-12">
+                                            <label class="form-label fs-6 mt-3 mb-1">Phone</label>
+                                            <div class="form-icon position-relative">
+                                                <i class="mdi mdi-book-outline icon-sm icons"></i>
+                                                <input name="phone" id="phone"  formControlName="phone" class="form-control ps-5 fs-6" type="text"
+                                                    placeholder="Phone :">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label class="form-label fs-6 mt-3 mb-1">Message <span
+                                                    class="text-danger">*</span></label>
+                                            <div class="form-icon position-relative">
+                                                <i class="mdi mdi-message-outline icon-sm icons"></i>
+                                                <textarea name="message" id="comments" rows="4" formControlName="message"
+                                                    class="form-control ps-5 fs-6" placeholder="Message :"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <!--end col-->
+
+                                </form>
+                                <!-- end form -->
+
+                            </div>
+                            <!--end primary-form-->
+                        </div>
+                    </div>
+                </div>
+                <!--end col-->
+
+                <div class="col-lg-6 col-md-6 order-1 order-md-2 mt-3 pt-2">
+                    <div class="title-heading ms-lg-4">
+                        <h4 class="title text-capitalize"> Prêt à travailler avec nous ?
+                        </h4>
+                        <p class="para-desc text-muted mx-auto">Nous sommes tellement excités et fiers de notre entreprise. Il est très simple de créer une page de destination pour votre formidable entreprise.
+                        </p>
+                        <div class="d-flex contact-detail align-items-center mt-3 pt-2">
+                            <div class="icon float-start me-4">
+                                <i class="mdi mdi-email text-primary d-block rounded-pill h3 mb-0"></i>
+                            </div>
+                            <div class="flex-1 content">
+                                <h5 class="title fw-bold mb-1">Email</h5>
+                                <p class="mb-0 text-muted"><span class="fw-bold">E-mail :</span> Houdanourjarboui@gmail.com
+                                </p>                                
+                            </div>
+                        </div>
+
+                        <div class="d-flex contact-detail align-items-center mt-3 pt-2">
+                            <div class="icon float-start me-4">
+                                <i class="mdi mdi-phone text-primary d-block rounded-pill h3 mb-0"></i>
+                            </div>
+                            <div class="flex-1 content">
+                                <h5 class="title fw-bold mb-1">Appelle maintenant</h5>
+                                <p class="mb-0 text-muted"><span class="fw-bold">Phone :</span> 29885331
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex contact-detail align-items-center mt-3 pt-2">
+                            <div class="icon float-start me-4">
+                                <i class="mdi mdi-map-marker text-primary d-block rounded-pill h3 mb-0"></i>
+                            </div>
+                            <div class="flex-1 content">
+                                <h5 class="title fw-bold mb-1">Où trouver</h5>
+                                <p class="mb-0 text-muted"><span class="fw-bold">Adresse :</span> R7W8+P5G, Rue De L'Ile De Tasmanie،, Tunis</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end col-->
+            </div>
+            <!--end row-->
+        </div>
+      
+    </section>
+    <!--end section-->
+    <!-- contact END -->
+
+    <!-- Partner End -->
+
+    <!-- Footer Start -->
+   <app-footer></app-footer>
+    <!-- Footer End -->
+
+    <!-- Style switcher -->
+    <div id="style-switcher" class="bg-light border p-3 pt-2 pb-2" onclick="toggleSwitcher()">
+        <div>
+            <h6 class="title text-center">Select Your Color</h6>
+            <ul class="pattern">
+                <li class="list-inline-item">
+                    <a class="color1" href="javascript: void(0);" onclick="setColor('default')"></a>
+                </li>
+                <li class="list-inline-item">
+                    <a class="color2" href="javascript: void(0);" onclick="setColor('blue')"></a>
+                </li>
+                <li class="list-inline-item">
+                    <a class="color3" href="javascript: void(0);" onclick="setColor('yellow')"></a>
+                </li>
+                <li class="list-inline-item">
+                    <a class="color4" href="javascript: void(0);" onclick="setColor('dark-pink')"></a>
+                </li>
+                <li class="list-inline-item">
+                    <a class="color5" href="javascript: void(0);" onclick="setColor('orange')"></a>
+                </li>
+                <li class="list-inline-item">
+                    <a class="color6" href="javascript: void(0);" onclick="setColor('brown')"></a>
+                </li>
+                <li class="list-inline-item">
+                    <a class="color7" href="javascript: void(0);" onclick="setColor('green')"></a>
+                </li>
+                <li class="list-inline-item">
+                    <a class="color8" href="javascript: void(0);" onclick="setColor('purple')"></a>
+                </li>
+                <li class="list-inline-item">
+                    <a class="color9" href="javascript: void(0);" onclick="setColor('firozi')"></a>
+                </li>
+            </ul>
+        </div>
+        <div class="bottom">
+            <a href="javascript: void(0);" class="settings bg-white shadow d-block"><i
+                    class="mdi mdi-cog ms-1 mdi-24px position-absolute mdi-spin text-primary"></i></a>
+        </div>
+    </div>
+    <!-- end Style switcher -->
+
+    <!-- Back to top -->
+    <a href="#" class="back-to-top rounded-pill text-center" id="back-to-top">
+        <i class="mdi mdi-chevron-up d-block"> </i>
+    </a>
+    <!-- Back to top -->
+
+    
+</body>
+
+
+<!-- Mirrored from shreethemes.in/bizcell/layouts/page-contact-one.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Mar 2024 22:36:40 GMT -->
+</html>
