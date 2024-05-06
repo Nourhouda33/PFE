@@ -1,7 +1,10 @@
 package com.Pfe.ProjetCollaboratif.Service;
 
+import com.Pfe.ProjetCollaboratif.Beans.SaveProjetEquipe;
 import com.Pfe.ProjetCollaboratif.Beans.SaveTacheDeveloppeur;
 import com.Pfe.ProjetCollaboratif.Entity.Developpeurs;
+import com.Pfe.ProjetCollaboratif.Entity.Equipe;
+import com.Pfe.ProjetCollaboratif.Entity.Projet;
 import com.Pfe.ProjetCollaboratif.Entity.Tache;
 import com.Pfe.ProjetCollaboratif.Repository.DeveloppeursRepository;
 import com.Pfe.ProjetCollaboratif.Repository.TacheRepository;
@@ -17,10 +20,11 @@ public class TacheServiceImpl implements TacheService{
     @Autowired
     TacheRepository tacheRepository;
     @Override
-    public Tache ajouterTache(SaveTacheDeveloppeur module) {
-        Tache tache = SaveTacheDeveloppeur.toEntity(module);
-        System.out.println("idDeveloppeur" + module.getIdDeveloppeur());
-        Developpeurs dev = developpeursRepository.findById(module.getIdDeveloppeur()).get();
+    public Tache ajouterTache(SaveTacheDeveloppeur model) {
+
+        Tache tache= SaveTacheDeveloppeur.toEntity(model);
+        System.out.println("idDeveloppeur"+model.getIdDeveloppeurs());
+        Developpeurs dev=developpeursRepository.findById(model.getIdDeveloppeurs()).get();
         tache.setDeveloppeurs(dev);
         return tacheRepository.save(tache);
     }

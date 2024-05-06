@@ -11,7 +11,8 @@ public class Tache {
     private Long id;
 
     private String discription;
-    private boolean done;
+
+    private String status;
     @ManyToOne
     Developpeurs developpeurs;
 
@@ -23,18 +24,19 @@ public class Tache {
         this.id = id;
     }
 
-    public boolean isDone() {
-        return done;
-    }
 
-    public void setDone(boolean done) {
-        this.done = done;
-    }
 
     public String getDiscription() {
         return discription;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public Developpeurs getDeveloppeurs() {
         return developpeurs;

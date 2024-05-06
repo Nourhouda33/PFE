@@ -1,9 +1,11 @@
+import { Developpeurs } from "./Developpeurs.Entity";
 
 export class Tache{
     constructor(
         public id ?: number,
         public discription?: String,
-        public done ?: boolean,
        
+        public status?: String,
+        public developpeurs?: Developpeurs,
             ){}
 }

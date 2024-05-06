@@ -6,8 +6,9 @@ public class SaveTacheDeveloppeur {
     private Long id;
 
     private String discription;
-    private boolean done;
-    private Long idDeveloppeur;
+
+    private String status;
+    private Long idDeveloppeurs;
 
     public Long getId() {
         return id;
@@ -25,20 +26,22 @@ public class SaveTacheDeveloppeur {
         this.discription = discription;
     }
 
-    public boolean isDone() {
-        return done;
+
+
+    public String getStatus() {
+        return status;
     }
 
-    public void setDone(boolean done) {
-        this.done = done;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public Long getIdDeveloppeur() {
-        return idDeveloppeur;
+    public Long getIdDeveloppeurs() {
+        return idDeveloppeurs;
     }
 
-    public void setIdDeveloppeur(Long idDeveloppeur) {
-        this.idDeveloppeur = idDeveloppeur;
+    public void setIdDeveloppeurs(Long idDeveloppeurs) {
+        this.idDeveloppeurs = idDeveloppeurs;
     }
 
     public static Tache toEntity(SaveTacheDeveloppeur model)
@@ -47,13 +50,10 @@ public class SaveTacheDeveloppeur {
         {
             return null ;
         }
-        Tache developpeurs=new Tache();
-        developpeurs.setId(model.getId());
-        developpeurs.setDiscription(model.getDiscription());
-        developpeurs.setDone(model.isDone());
-
-
-
-        return developpeurs;
+        Tache tache=new Tache();
+        tache.setId(model.getId());
+        tache.setDiscription(model.getDiscription());
+        tache.setStatus(model.getStatus());
+        return tache;
     }
 }
