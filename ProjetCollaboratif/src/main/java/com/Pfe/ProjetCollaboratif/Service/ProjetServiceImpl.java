@@ -25,9 +25,7 @@ public class ProjetServiceImpl implements ProjetService{
     public Projet ajouterProjet(SaveProjetEquipe model) {
 
         Projet projet= SaveProjetEquipe.toEntity(model);
-        System.out.println("idTache"+model.getIdTache());
-        Tache tache=tacheRepository.findById(model.getIdTache()).get();
-        projet.setTache(tache);
+
         System.out.println("IdEquipe"+model.getIdEquipe());
         Equipe equipe=equipeRepository.findById(model.getIdEquipe()).get();
         projet.setEquipe(equipe);
@@ -56,5 +54,10 @@ public class ProjetServiceImpl implements ProjetService{
     public Optional<Projet> getProjet(Long id) {
 
         return projetRepository.findById(id);
+    }
+
+    @Override
+    public List<Projet> getEquipeByProjet(Long id) {
+        return projetRepository.findByEquipeId(id);
     }
 }

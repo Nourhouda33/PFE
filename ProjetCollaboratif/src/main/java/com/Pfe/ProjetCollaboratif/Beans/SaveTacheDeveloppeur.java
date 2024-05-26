@@ -1,14 +1,33 @@
 package com.Pfe.ProjetCollaboratif.Beans;
 
 import com.Pfe.ProjetCollaboratif.Entity.Tache;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+import java.util.Date;
+import java.util.List;
 
 public class SaveTacheDeveloppeur {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String nom;
+    private Date date;
 
-    private String discription;
 
-    private String status;
-    private Long idDeveloppeurs;
+
+
+   private Long idProjet;
+
+
+    public Long getIdProjet() {
+        return idProjet;
+    }
+
+    public void setIdProjet(Long idProjet) {
+        this.idProjet = idProjet;
+    }
 
     public Long getId() {
         return id;
@@ -18,31 +37,26 @@ public class SaveTacheDeveloppeur {
         this.id = id;
     }
 
-    public String getDiscription() {
-        return discription;
+    public String getNom() {
+        return nom;
     }
 
-    public void setDiscription(String discription) {
-        this.discription = discription;
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
 
 
-    public String getStatus() {
-        return status;
-    }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
-    public Long getIdDeveloppeurs() {
-        return idDeveloppeurs;
-    }
-
-    public void setIdDeveloppeurs(Long idDeveloppeurs) {
-        this.idDeveloppeurs = idDeveloppeurs;
-    }
 
     public static Tache toEntity(SaveTacheDeveloppeur model)
     {
@@ -52,8 +66,8 @@ public class SaveTacheDeveloppeur {
         }
         Tache tache=new Tache();
         tache.setId(model.getId());
-        tache.setDiscription(model.getDiscription());
-        tache.setStatus(model.getStatus());
+        tache.setNom(model.getNom());
+        tache.setDate(model.getDate());
         return tache;
     }
 }

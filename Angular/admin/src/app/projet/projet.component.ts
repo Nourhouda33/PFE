@@ -44,9 +44,7 @@ export class ProjetComponent {
           status: new FormControl('',[
             Validators.required,]),
             equipe: new FormControl('',[
-              Validators.required,]),
-              tache: new FormControl('',[
-                Validators.required,]),
+              Validators.required,])
    }
      this.ProjetForm = this.fb.group(formControls)
   }
@@ -57,7 +55,6 @@ export class ProjetComponent {
   get logo() { return this.ProjetForm.get('logo');}
   get status() { return this.ProjetForm.get('status');}
   get equipe() { return this.ProjetForm.get('equipe');}
-  get tache() { return this.ProjetForm.get('tache');}
   onSelectFile(event: any) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
@@ -89,7 +86,6 @@ export class ProjetComponent {
     model.logo=this.imgURL;
     model.status=data.status;
     model.idEquipe=+data.equipe;
-    model.idTache=+data.tache;
    
 
     if (
@@ -98,8 +94,7 @@ export class ProjetComponent {
       data.dateFin == 0 ||
       data.discription == 0 ||
       data.status ==0 ||
-      data.equipe ==0 ||
-      data.tache ==0 
+      data.equipe ==0 
     ) {
       this.toast.info({
         detail: 'Error Message',
@@ -114,8 +109,9 @@ export class ProjetComponent {
           summary: 'projet est Envoyé avec succés',
         });
 
-        this.route.navigate(['/Projet']).then(()=>[window.location.reload()]);
-        //parceque je peux pas acceder a la page projet lorsque j'ajout un projet
+        this.service.getProjet().subscribe(projet => {
+          this.ListProjet = projet
+        })        //parceque je peux pas acceder a la page projet lorsque j'ajout un projet
       },
       err=>{
         console.log(err);
@@ -132,10 +128,13 @@ export class ProjetComponent {
     if(confirm("Voulez vous supprimer cet projet avec l'ID " + projet.id + " ?")) {
      
       this.service.onDeleteProjet(projet.id).subscribe(() => {
-        this.route.navigate(['/Projet']).then(() => {
-          window.location.reload()
+       // this.route.navigate(['/Projet']).then(() => {
+         // window.location.reload()
+         this.service.getProjet().subscribe(projet => {
+          this.ListProjet = projet
         })
-      })
+       })
+       
    
     }
   }
@@ -146,9 +145,7 @@ export class ProjetComponent {
     this.service.getEquipe().subscribe(equipe => {
       this.Listequipe = equipe
     })
-    this.service.getTasks().subscribe(tache => {
-      this.Listtache = tache
-    })
+  
 
     let idEvent = this.router.snapshot.params['id'];
     this.id = idEvent;
@@ -172,11 +169,13 @@ export class ProjetComponent {
     let data = this.updateForm.value;
     let projet =new Projet(
       this.id,
+      data.logo,
       data.nom,
       data.dateDebuit,
       data.dateFin,
       data.discription,
-      data.status
+      data.status,
+      data.equipe
    );
     console.log(projet);
     console.log(data);

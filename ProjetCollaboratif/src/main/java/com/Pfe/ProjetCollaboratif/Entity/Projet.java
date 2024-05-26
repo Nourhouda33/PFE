@@ -8,17 +8,18 @@ public class Projet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Lob
+    @Column(columnDefinition = "LONGTEXT")
+    private String logo;
     private String nom;
     private Date dateDebuit;
     private Date dateFin;
     private String discription;
-    @Lob
-    private String logo;
+
     private String status;
     @ManyToOne
     Equipe equipe;
-    @ManyToOne
-    Tache tache;
+
 
     public Equipe getEquipe() {
         return equipe;
@@ -28,13 +29,7 @@ public class Projet {
         this.equipe = equipe;
     }
 
-    public Tache getTache() {
-        return tache;
-    }
 
-    public void setTache(Tache tache) {
-        this.tache = tache;
-    }
 
     public String getLogo() {
         return logo;

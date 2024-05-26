@@ -184,16 +184,81 @@
 
                                                        <td class="text-gray-900 fw-bold text-hover-primary "> <!--begin::Details-->
                                                     
-                                                            {{equipe.developpeurs.prenom}} {{equipe.developpeurs.nom}} 
-                                                        <!--end::Details--></td>
+                                                        
+                                                        <div class="row mb-8">
+                                                            <!--begin::Col-->
+                                                           
+                                                            <div class="col-xl-9 fv-row"> 
+                                                            <div class="panel-group">
+                                                                <div class="panel panel-default">
+                                                                  <div class="panel-heading">
+                                                              
+                                                                <a data-toggle="collapse" href="#collapse1">developpeurs</a>
+                                                            </div></div>
+                                                            <!--end::Col-->
+                                                            <!--begin::Col-->
+                                                            <div id="collapse1" class="panel-collapse collapse">               
+                                                                
+                                                               
+                                                                
+                                                                        <!-- Liste des développeurs de l'équipe -->
+                                                                        <div class="mb-15">
+                                                                            <div class="mh-375px scroll-y me-n7 pe-7">
+                                                                                <div *ngFor="let dev of ListDeveloppeurs" class="d-flex flex-stack py-5 border-bottom border-gray-300 border-bottom-dashed">
+                                                                                    <div class="d-flex align-items-center">
+                                                                                        <div class="symbol symbol-35px symbol-circle">
+                                                                                            <img alt="Pic" [src]="dev.img" />
+                                                                                        </div>
+                                                                                        <div class="ms-6">
+                                                                                            <a href="#" class="d-flex align-items-center fs-5 fw-bold text-gray-900 text-hover-primary">
+                                                                                              
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+                                                                                                
+                                                                                                <span class="badge badge-light fs-8 fw-semibold ms-2">
+                                                                                                    {{ dev.etat ? 'Actif' : 'Inactif' }}
+                                                                                                </span>
+                                                                                            </a>
+                                                                                            <div class="fw-semibold text-muted">{{ dev.email }}</div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="d-flex">
+                                                                                        <div class="text-end">
+                                                                                            <div class="fs-5 fw-bold text-gray-900">{{ dev.tel }}</div>
+                                                                                            <div class="fs-7 text-muted">{{ dev.adresse }}</div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    
+                                                                                
+                                                        </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
 
 
-															<td>
-                                                                <button (click)="Deleteequipe(equipe)" type="submit"
-                                                                class="btn btn-icon btn-bg-light btn-active-color-primary">
-                                                                <i class="fa-solid fa-trash"></i> </button>
 
-														 </td>
+
+
+
+
+
+
+                                                       </td>
+
+
+													
 
                                                     </tr>
 
@@ -10108,14 +10173,15 @@
                         <textarea type="text" name="Description" formControlName="discription" class="form-control"
                             placeholder="Description..."></textarea>
                     </div>
-                    
-                    <div class="fv-row mb-7">
-                        <label class="required fw-semibold fs-6 mb-2">Equipes</label>
-                        <select formControlName="developpeurs"  class="form-control">
-                            <option *ngFor="let developpeurs of ListDeveloppeurs" [value]="developpeurs.id">{{developpeurs.prenom}} {{developpeurs.nom}}</option>
-                        </select>
+                    <label class="required fw-semibold fs-6 mb-2">Developpeur</label>
 
-                    </div>
+                    <div class="fv-row mb-7">
+                        
+                        <select formControlName="developpeurs" placeholder="ajouter" class="selectpicker" multiple >
+                          <option *ngFor="let dev of ListDeveloppeurs" [value]="dev.id" >{{ dev.nom }}</option>
+                        </select>
+                      </div>
+                   
                    
                 </div>
                
@@ -10131,6 +10197,12 @@
     <!--end::Modal dialog-->
 
   </div></div>
+ 
+
+
+
+ 
+
 </body>
 
 </html>

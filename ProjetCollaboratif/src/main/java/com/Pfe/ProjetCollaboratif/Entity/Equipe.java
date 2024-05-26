@@ -2,6 +2,9 @@ package com.Pfe.ProjetCollaboratif.Entity;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 public class Equipe {
     @Id
@@ -10,14 +13,14 @@ public class Equipe {
     private String nom;
 
     private String discription;
-    @ManyToOne
-    Developpeurs developpeurs;
+    @ManyToMany
+    private Set<Developpeurs> developpeurs = new HashSet<>();
 
-    public Developpeurs getDeveloppeurs() {
+    public Set<Developpeurs> getDeveloppeurs() {
         return developpeurs;
     }
 
-    public void setDeveloppeurs(Developpeurs developpeurs) {
+    public void setDeveloppeurs(Set<Developpeurs> developpeurs) {
         this.developpeurs = developpeurs;
     }
 

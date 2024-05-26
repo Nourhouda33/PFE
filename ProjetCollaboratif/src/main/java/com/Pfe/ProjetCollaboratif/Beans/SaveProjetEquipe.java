@@ -1,10 +1,7 @@
 package com.Pfe.ProjetCollaboratif.Beans;
 
 import com.Pfe.ProjetCollaboratif.Entity.Projet;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
@@ -12,15 +9,17 @@ public class SaveProjetEquipe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Lob
+    @Column(columnDefinition = "LONGTEXT")
+    private String logo;
     private String nom;
     private Date dateDebuit;
     private Date dateFin;
     private String discription;
-    @Lob
-    private String logo;
+
     private String status;
     private Long idEquipe;
-    private Long idTache;
+
 
     public Long getId() {
         return id;
@@ -86,13 +85,7 @@ public class SaveProjetEquipe {
         this.idEquipe = idEquipe;
     }
 
-    public Long getIdTache() {
-        return idTache;
-    }
 
-    public void setIdTache(Long idTache) {
-        this.idTache = idTache;
-    }
 
     public static Projet toEntity(SaveProjetEquipe model)
     {

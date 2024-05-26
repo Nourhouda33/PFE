@@ -6,13 +6,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 
+import java.util.List;
+
 public class SaveDeveloppeurEquipe {
     @Id
     @GeneratedValue()
     private Long id ;
     private String nom;
     private String discription;
-    private Long idDeveloppeurs;
+    private List<Long> idDeveloppeurs;
 
     public Long getId() {
         return id;
@@ -40,13 +42,14 @@ public class SaveDeveloppeurEquipe {
         this.discription = discription;
     }
 
-    public Long getIdDeveloppeurs() {
+    public List<Long> getIdDeveloppeurs() {
         return idDeveloppeurs;
     }
 
-    public void setIdDeveloppeurs(Long idDeveloppeurs) {
+    public void setIdDeveloppeurs(List<Long> idDeveloppeurs) {
         this.idDeveloppeurs = idDeveloppeurs;
     }
+
 
     public static Equipe toEntity(SaveDeveloppeurEquipe model)
     {

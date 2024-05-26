@@ -1,100 +1,271 @@
-
 <mat-toolbar style="background-color:rgb(53, 26, 204);">
-  <h1>Collab Pro</h1>  
+  <h1>Collab Pro</h1>
 </mat-toolbar>
-
 <div class="contaire-fluid">
-    <div class="row" id="mondiv">
-        <div style="background: rgb(245, 250, 250); height: 93vh;" class="col-md-3">
-            <div >
-                <mat-card class="mt-3">
-                    <form [formGroup]="todoForm" >
-                        <mat-form-field appearance="fill">
-                            <mat-label>Nom Tâche</mat-label>
-                            <input formControlName="discription" matInput placeholder="status">
-                            <mat-icon matSuffix>         </mat-icon>
-                            <mat-hint>Ajouter le nom de tâche</mat-hint>
-                            
-                        </mat-form-field>
-                        <mat-form-field appearance="fill">
-                          <mat-label>Status</mat-label>
-                          <input formControlName="status" matInput placeholder="status">
-                          <mat-icon matSuffix>          </mat-icon>
-                          <mat-hint>Ajouter le status de la Tâche</mat-hint>
-                          
-                      </mat-form-field>
-                        <select class="form-select" aria-label="Developpeur" formControlName="developpeurs">
-                          <option *ngFor="let developpeurs of ListDeveloppeurs" [value]="developpeurs.id">{{developpeurs.prenom}}{{developpeurs.nom}}</option>
-                        </select>
-                       
-                        <button *ngIf="!isEditEnabled" (click)="addNewTache()" mat-raised-button color="primary" >Ajouter</button>
-                    </form>
-                </mat-card>
+  <div class="row" id="mondiv">
+    <div style="background: rgb(245, 250, 250); height: 93vh;" class="col-md-3">
+      <div>
+        <mat-card classe="mt-3">
+          <form [formGroup]="todoForm">
+            <mat-form-field appearance="fill">
+              <mat-label>Nom Tâche</mat-label>
+              <input formControlName="item" matInput placeholder="Placeholder">
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+              <mat-hint>Ajouter le nom de tâche</mat-hint>
+            </mat-form-field>
+            <button *ngIf="!isEditEnabled" (click)="addNewTache()" mat-raised-button color="primary"
+              [disabled]="todoForm.invalid">Ajouter</button>
+            <!--<button *ngIf="isEditEnabled" (click)="updateTask()" mat-raised-button color="primary"
+              [disabled]="todoForm.invalid">Modifier</button>-->
+
+          </form>
+        </mat-card>
+      </div>
+
+    </div>
+    <div class="col-md-9 mt-3">
+      <div cdkDropListGroup>
+        <div class="row">
+          <div class="col-md-4">
+            <!--to do-->
+            <div class="example-container">
+              <h2 class="head-title">A Faire <span *ngIf="tasks.length >0"> - {{tasks.length}}</span></h2>
+
+              <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="tasks" class="example-list"
+                (cdkDropListDropped)="drop($event)">
+                <div class="example-box" cdkDrag *ngFor="let item of tasks; let i=index"><a href="#viewbacklog"
+                    data-bs-toggle="offcanvas">{{item.nom}}</a>
+                  <div class="box">
+                    <button mat-icon-button class="btn btn-sm btn-light-secondary d-flex align-items-center gap-2" color="warn" (click)="deleteTask(item.id)"><i
+                        class="bi bi-trash"></i></button>
+                        <button
+                                                class="btn btn-sm btn-light-secondary d-flex align-items-center gap-2"
+                                                data-bs-toggle="modal" data-bs-target="#address-edit_add-modal"  (click)="UpdateTache(item.id)"><i class="bi bi-pen"></i></button>
+                    <!--<button mat-icon-button color="primary" (click)="onEdit(item,i)"><i class="bi bi-pencil"></i></button>-->
+
+                  </div>
+                </div>
+                <div class="pc-kanban-addnew">
+                    <div class="pc-add-task1 collapse show">
+                      <div class="d-grid"><button class="btn btn-link-primary" data-bs-toggle="collapse"
+                          data-bs-target=".pc-add-task1">Add Task</button></div>
+                    </div>
+                    <form ngSubmit="addNewTache()" [formGroup]="todoForm">
+
+                    <div class="card border pc-add-task1 collapse">
+                      <div class="card-body p-3">
+                        <input type="text" formControlName="nom" class="form-control bg-transparent border-0 shadow-none" placeholder="Ajouter Tâche">
+                        <div class="row g-1 align-items-center">
+                          <div class="col-6">
+                            <a class="avtar avtar-xs btn-link-primary" data-toggle="collapse" href="#collapseDev" role="button" aria-expanded="false"
+            aria-controls="collapseDev"><i class="ti ti-users f-18"></i> </a>
+            <div class="collapse" id="collapseDev">
+
+             <!-- <div class="fv-row mb-7">
+
+                <select formControlName="projet" placeholder="ajouter" class="selectpicker" multiple  >
+                  <option *ngFor="let dev of EquipeProjet" >{{dev.nom}}</option>
+                </select>
+              </div>-->
+            </div>
+              <a class="avtar avtar-xs btn-link-primary" data-toggle="collapse" href="#collapseDate" role="button" aria-expanded="false" aria-controls="collapseDate"><i class="ti ti-calendar-event f-18"></i></a>
+                            <div class="collapse" id="collapseDate">
+                              <div class="mb-4 row">
+                              <div class="col-sm-12"><input formControlName="date" class="form-control" type="date" ></div>
+                            </div></div>
+                          </div>
+                          <div class="col-6 text-end d-flex align-items-center justify-content-end">
+                          </div>
+                          <button (click)="addNewTache()" mat-raised-button color="primary">Ajouter</button>
+
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
 
             </div>
+          </div>
+
+          <div class="col-md-4">
+            <!-- in progress-->
+            <div class="example-container">
+              <h2 class="head-title">En Cours <span *ngIf="inprogress.length >0"> - {{inprogress.length}}</span></h2>
+
+              <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="inprogress" class="example-list"
+                (cdkDropListDropped)="drop($event)">
+                <div class="example-box" cdkDrag *ngFor="let item of inprogress; let i=index "><a href="/#viewbacklog/{{item.id}}"
+                  data-bs-toggle="offcanvas">{{item.nom}}</a>
+                  <div class="box">
+                    <button mat-icon-button color="warn" (click)="deleteinprogress(i)">
+                     <i class="bi bi-trash"></i></button>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <!--done-->
+            <div class="example-container">
+              <h2 class="head-title">Fait <span *ngIf="done.length >0"> - {{done.length}}</span></h2>
+
+              <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="done" class="example-list"
+                (cdkDropListDropped)="drop($event)">
+                <div class="example-box" cdkDrag *ngFor="let item of done; let i=index">{{item.nom}}
+                  <div class="box">
+                    <button mat-icon-button color="warn" (click)="deletedone(i)"> <i class="bi bi-trash"></i></button>
+                    <button mat-icon-button color="accent"><mat-icon>check-cirle</mat-icon></button>
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
         </div>
-        <div class="col-md-9 mt-3" >
-            <div cdkDropListGroup>
-                <div class="row">
-                    <div class="col-md-4">
-                        <!--to do-->
-                        <div class="example-container">
-                            <h2 class="head-title">A Faire <span *ngIf="tasks.length >0"> - {{tasks.length}}</span></h2>
-                          
-                            <div
-                              cdkDropList
-                              #todoList="cdkDropList"
-                              [cdkDropListData]="tasks"
-                              class="example-list"
-                              (cdkDropListDropped)="drop($event)">
-                              <div class="example-box" cdkDrag *ngFor="let tache of tasks; let i=index">{{tache.discription}}
-                                <div class="box">
-                                  <button mat-icon-button color="warn" (click)="deleteTache(tache.id)"> <mat-icon>delete</mat-icon></button>
-                                </div>
-                              </div>
-                            </div>
-                        </div>
+      </div>
+    </div>
+    <form  ngSubmit="addNewSousTache"
+    [formGroup]="SousTacheForm">
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="viewbacklog" aria-labelledby="viewbacklogLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="viewbacklogLabel">Détailes de Tâche</h5><button class="btn-close"
+            data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+         
+          <div class="mb-3 row"><label class="col-form-label col-sm-3 text-sm-end"> <h5>Description:</h5></label>
+            <div class="col-sm-8"><textarea class="form-control" rows="3" formControlName="Description"></textarea></div>
+          </div>
+          <a class="btn btn-light" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+            aria-controls="collapseExample">
+            <h5>To Do List</h5>
+          </a>
+          <div class="collapse" id="collapseExample">
+
+            <div class="card">
+
+              <div class="card-body widget-last-task">
+
+                <div class="new-task">
+                  <div class="to-do-list mb-3">
+                    <div class="d-inline-block">
+                      <div class="check-task form-check"><input type="checkbox" class="form-check-input" formControlName="checkList"
+                          id="customCheck1">
+                        <label class="form-check-label" for="customCheck1" ></label>
+                      </div>
                     </div>
-                    <div class="col-md-4">
-                        <!-- in progress-->
-                        <div class="example-container">
-                            <h2 class="head-title">En Cours <span *ngIf="inprogress.length >0"> - {{inprogress.length}}</span></h2>
-                          
-                            <div
-                              cdkDropList
-                              #todoList="cdkDropList"
-                              [cdkDropListData]="inprogress"
-                              class="example-list"
-                              (cdkDropListDropped)="drop($event)">
-                              <div class="example-box" cdkDrag *ngFor="let tache of inprogress; let i=index ">{{tache.discription}}
-                                <div class="box">
-                                  <button mat-icon-button color="warn" (click)="deleteinprogress(tache.id)"> <mat-icon>delete</mat-icon></button>
-                                </div>
-                              </div>
-                            </div>
-                        </div>
+                    <div class="float-end"><a href="#!" class="delete_todolist"><i class="far fa-trash-alt"></i></a>
                     </div>
-                    <div class="col-md-4">
-                        <!--done-->
-                        <div class="example-container">
-                            <h2 class="head-title">Fait <span *ngIf="done1.length >0"> - {{done1.length}} </span></h2>
-                          
-                            <div
-                              cdkDropList
-                              #todoList="cdkDropList"
-                              [cdkDropListData]="done1"
-                              class="example-list"
-                              (cdkDropListDropped)="drop($event)">
-                              <div class="example-box" cdkDrag *ngFor="let discription of done1; let i=index">{{discription.discription}}
-                                <div class="box">
-                                  <button mat-icon-button color="accent" ><mat-icon>check-cirle</mat-icon></button>
+                  </div>
+                 
+                </div>
+                <div class="right-icon-control m-t-15">
+                  <div class="input-group input-group-button"><input type="text" class="form-control"
+                      placeholder="Add Task" autocomplete="off"> <button class="btn btn-secondary" type="button"><i
+                        class="feather icon-plus m-0"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+         
+          
+          <div class="d-flex align-items-center mt-4 mb-2"><img src="../assets/images/user/avatar-1.jpg"
+              alt="user-image" class="user-avtar wid-25 rounded-circle">
+            <h5 class="mb-0 mx-3">Barney Thea</h5><span class="text-muted text-sm"><i
+                class="fas fa-circle f-8 align-middle me-1"></i> 2 min ago</span>
+          </div>
+          <p>Comment 1</p>
+          <div class="card border">
+            <div class="card-body p-3"><input type="text" formControlName="commentaire" class="form-control bg-transparent border-0 shadow-none mb-3"
+                placeholder="Add Comment">
+              <div class="row g-1 align-items-center">
+                <div class="col-6"><input class="form-control d-none" formControlName="fichier" type="file" id="formFileMultiplesproduct"> <label
+                  class="avtar avtar-xs btn-link-primary" for="formFileMultiplesproduct"><i class="ti ti-photo f-18"></i>
+                </label><input class="form-control d-none" formControlName="image" type="file" id="formFileMultiplesproduct"> <label
+                class="avtar avtar-xs btn-link-secondary" for="formFileMultiplesproduct"><i class="ti ti-paperclip f-18"></i> </label>
+                <input class="form-control d-none" type="file" id="formFileMultiplesproduct"> <label
+                  class="avtar avtar-xs btn-link-success" for="formFileMultiplesproduct"><i class="ti ti-brand-google-drive f-18"></i></label>
+                </div>
+              <!--  <div class="col-6 text-end"><a href="#" class="btn btn-primary btn-sm" style="background-color: pink; border-color: pink;">Comment</a></div>
+             --> </div>
+              
+            </div>
+            
+          </div>
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary" style="background-color: pink; border-color: pink;">Save</button>
+          </div>
+        </div>
+      </div>
+      
+    </form>
+  </div>
+
+  <div class="modal fade" id="address-edit_add-modal" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <form  [formGroup]="todoForm">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header justify-content-between">
+                
+                
+                    <h5 class="mb-0">Add New address</h5>
+             
+                    <div class="collapse multi-collapse show" data-bs-toggle="tooltip" title="Add New"></div><a href="#"
+                        class="avtar avtar-s btn-link-danger" data-bs-dismiss="modal" data-bs-toggle="tooltip"
+                        title="Close"><i class="ti ti-x f-20"></i></a>
+                
+            </div>
+            <div>
+            <div class="modal-body">
+                
+                <div >
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mb-3 row align-items-center"><label class="col-lg-4 col-form-label">
+                                    Nom :<small class="text-muted d-block">Nom de tâche</small></label>
+                                <div class="col-lg-8">
+                                    <input type="text" formControlName="nom" class="form-control"></div>
                                 </div>
+                            </div>
+                            
+                           
+                            <div class="mb-3 row"><label class="col-lg-4 col-form-label">Date of Birth :<small
+                                        class="text-muted d-block">Enter the date of birth</small></label>
+                                <div class="col-lg-8"><input type="date" formControlName="date" class="form-control"></div>
+                            </div>
+                            <div class="mb-3 row">
+                              <label class="col-lg-4 col-form-label">Assign to:<small
+                                class="text-muted d-block">Equipe :</small></label>
+                              <div class="col-lg-8">
+                                <div class="input-group input-group-button">
+                                <select formControlName="developpeurs" placeholder="ajouter" class="selectpicker" multiple>
+                                  <option *ngFor="let dev of ListDeveloppeur" [value]="dev.id">{{ dev.nom }}</option>
+                                </select>
                               </div>
                             </div>
-                        </div>
+                            </div>
+                           
+                            
                     </div>
                 </div>
             </div>
+            <div class="modal-footer justify-content-between collapse multi-collapse show">
+                <ul class="list-inline me-auto mb-0">
+                    <li class="list-inline-item align-bottom"><a href="#"
+                            class="avtar avtar-s btn-link-danger w-sm-auto" data-bs-toggle="tooltip"
+                            title="Delete"><i class="ti ti-trash f-18"></i></a></li>
+                </ul>
+                <div class="flex-grow-1 text-end"><button type="button" class="btn btn-link-danger"
+                        data-bs-dismiss="modal">Cancel</button> <button   mat-raised-button color="primary"
+                        >Modifier</button></div>
+            </div></div>
         </div>
     </div>
-</div>
+</form>
+  </div>

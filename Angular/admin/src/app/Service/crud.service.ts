@@ -9,6 +9,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Developpeurs } from '../Entity/Developpeurs.Entity';
 import { Fichier } from '../Entity/Fichier.Entity';
 import { Equipe } from '../Entity/Equipe.Entity';
+import { SousTache } from '../Entity/SousTache.Entity';
 
 @Injectable({
   providedIn: 'root'
@@ -85,7 +86,7 @@ export class CrudService {
     return this.http.get<Equipe[]>(this.apiUrl + "/equipe");
   }
 
-  updateDeveloppeurs(developpeurs: Developpeurs,id:number,) {
+  updateDeveloppeurs(developpeurs: Developpeurs,id:number) {
     const url =` ${this.apiUrl+"/Developpeurs"}/${id}`
     return this.http.put<any>(url, developpeurs);
   }
@@ -93,7 +94,14 @@ export class CrudService {
     return this.http.get<Projet[]>(this.apiUrl + "/Projet");
   }
 
-
+  findProjetById(id : number): Observable<Projet> {
+    const url = `${this.apiUrl + "/Projet"}/${id};`
+    return this.http.get<Projet>(url)
+  }
+  getEquipeByProjet(id:number):Observable<Projet[]>{
+    const url = `${this.apiUrl + "/Tache/getAllDeveloppeurs"}${id};`
+    return this.http.get<Projet[]>(url)
+  }
   addContact(contact:Contact)
    {
     return this.http.post<any>(this.apiUrl+"/Contact",contact);
@@ -119,11 +127,22 @@ export class CrudService {
     return this.http.get<Contact[]>(this.apiUrl + "/Contact");
   }
 
-
+  findSousTachById(id : number): Observable<SousTache> {
+    const url = `${this.apiUrl + "/SousTache"}/${id};`
+    return this.http.get<SousTache>(url)
+  }
+  getSousTache(): Observable<SousTache[]>{
+    return this.http.get<SousTache[]>(this.apiUrl + "/SousTache");
+  }
 
   updateProjet(id:number,projet: Projet) {
     const url =` ${this.apiUrl+"/Projet"}/${id}`
     return this.http.put<any>(url, projet);
+  }
+  addSousTache(sousTache:SousTache)
+   {
+    return this.http.post<any>(this.apiUrl+"/SousTache",sousTache);
+   
   }
 
   updateFichier(id:number,fichier: Fichier) {
@@ -134,10 +153,6 @@ export class CrudService {
 
  
 
-  findProjetById(id : number): Observable<Projet> {
-    const url = `${this.apiUrl + "/Projet"}/${id};`
-    return this.http.get<Projet>(url)
-  }
   findEquipeById(id : number): Observable<Equipe> {
     const url = `${this.apiUrl + "/equipe"}/${id};`
     return this.http.get<Equipe>(url)
@@ -174,6 +189,13 @@ export class CrudService {
     const url = `${this.apiUrl + "/Tache"}/${id};`
     return this.http.get<Tache>(url)
   }
+
+
+
+
+
+
+
   userDetails(){
     let token:any=localStorage.getItem('myToken');
     let decodeToken= this.helper.decodeToken(token);

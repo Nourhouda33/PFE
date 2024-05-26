@@ -1,5 +1,5 @@
 import { Equipe } from "./Equipe.Entity";
-import { Tache } from "./Tache.Entity";
+
 
 export class Projet{
     constructor(
@@ -11,7 +11,7 @@ export class Projet{
         public discription?: String,
         public status?: String,
         public equipe?: Equipe,
-        public tache?: Tache,
+       
 
         
     ){}

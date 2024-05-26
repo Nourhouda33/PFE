@@ -20,8 +20,8 @@ public class TacheRestController {
     @Autowired
     TacheService tacheService;
     @RequestMapping(method = RequestMethod.POST)
-    public Tache ajouterTache(@RequestBody SaveTacheDeveloppeur model) {
-      return tacheService.ajouterTache(model);
+    public Tache ajouterTache(@RequestBody SaveTacheDeveloppeur tache) {
+      return tacheService.ajouterTache(tache);
     }
 
     @RequestMapping(method = RequestMethod.GET)
@@ -35,9 +35,15 @@ public class TacheRestController {
         Optional<Tache> tach =tacheService.getTache(id);
         return tach;
     }
+
+
+
+
+
+
     @RequestMapping(value = "/{id}",method = RequestMethod.PUT)
-    public Tache ModifierTache(@PathVariable("id") Long id,@RequestBody Tache tache){
-        Tache newtach= tacheService.modifierTache(tache);
+    public Tache ModifierTache(@PathVariable("id") Long id,@RequestBody Tache model){
+        Tache newtach= tacheService.modifierTache(model);
         return newtach;
     }
     @RequestMapping(value = ("/{id}") , method = RequestMethod.DELETE)

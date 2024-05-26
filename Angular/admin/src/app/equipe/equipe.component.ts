@@ -7,12 +7,14 @@ import { NgToastService } from 'ng-angular-popup';
 import { SaveDeveloppeurEquipe } from '../Entity/SaveDeveloppeurEquipe.Entity';
 import { Developpeurs } from '../Entity/Developpeurs.Entity';
 
+
 @Component({
   selector: 'app-equipe',
   templateUrl: './equipe.component.html',
   styleUrls: ['./equipe.component.css']
 })
 export class EquipeComponent {
+  
 
   userFile:any
   message:any
@@ -53,7 +55,7 @@ addNewEquipe() {
   model.id=null;
   model.nom=data.nom;
   model.discription=data.discription;
-  model.idDeveloppeurs=+data.developpeurs;
+  model.idDeveloppeurs=data.developpeurs;
  console.log("dev",model.idDeveloppeurs)
  
 
@@ -123,7 +125,7 @@ addNewEquipe() {
       this.EquipeForm.patchValue({
         nom: event.nom,
         discription: event.discription,
-        developpeurs: event.developpeurs.nom,
+        developpeurs: event.developpeurs,
         
        });}); 
       

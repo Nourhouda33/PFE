@@ -8,6 +8,7 @@ public class Developpeurs {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Lob
+    @Column(columnDefinition = "LONGTEXT")
     private String img;
     private String nom;
     private String prenom;
@@ -20,6 +21,7 @@ public class Developpeurs {
     private boolean etat;
     private String adresse;
     private String tel;
+
 
     public String getAdresse() {
         return adresse;

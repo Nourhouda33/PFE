@@ -157,10 +157,9 @@ List Projets
                                                         <th class="min-w-140px">Nom</th>
                                                         <th class="min-w-120px">Date Debut</th>
                                                         <th class="min-w-120px">Date Fin</th>
-                                                        <th class="min-w-120px">Discription</th>
                                                         <th class="min-w-120px">Status</th>
                                                         <th class="min-w-120px">Equipe</th>
-                                                        <th class="min-w-120px">Tache</th>
+                                                        
 
 
 
@@ -196,28 +195,25 @@ List Projets
 
                                                         <td class="text-gray-900 fw-bold text-hover-primary">
                                                             
-                                                            <a href="/ModifierProjet/{{projet.id}}" type="submit" 
+                                                            <a href="/tâches/{{projet.id}}" type="submit" 
                                                             class="btn btn-icon btn-bg-light btn-active-color-primary">
                                                             {{projet.nom}}</a>
+                                                            
 
                                                         </td>
 
                                                         <td class="text-gray-900 fw-bold text-hover-primary ">
                                                             {{projet.dateDebuit}}
-
                                                         </td>
 
                                                         <td class="text-gray-900 fw-bold text-hover-primary ">
                                                             {{projet.dateFin}} </td>
-                                                        <td class="text-gray-900 fw-bold text-hover-primary ">
-                                                                {{projet.discription}} </td>
-                                                        <td class="text-gray-900 fw-bold text-hover-primary ">
-                                                                    {{projet.status}} </td>
-
+                                                        
+                                                                <td><span class="badge badge-light-success me-auto">
+                                                                    {{projet.status}} </span></td>
                                                                     <td class="text-gray-900 fw-bold text-hover-primary ">
                                                                         {{projet.equipe.nom}} </td>
-                                                                        <td class="text-gray-900 fw-bold text-hover-primary ">
-                                                                            {{projet.tache.discription}} </td>
+                                                                        
                                                         <td>
 
                                                             <button (click)="DeleteProjet(projet)" type="submit"
@@ -9330,10 +9326,10 @@ List Projets
                 <div class="modal-body scroll-y mx-5 mx-xl-18 pt-0 pb-15">
                     <!--begin::Content-->
                     <div class="text-center mb-13">
-                        <h1 class="mb-3">Search Users</h1>
+                        <h1 class="mb-3">Equipe</h1>
 
                         <div class="text-muted fw-semibold fs-5">
-                            Invite Collaborators To Your Project
+                            Liste developpeurs de l'equipe
                         </div>
                     </div>
                     <!--end::Content-->
@@ -9343,7 +9339,7 @@ List Projets
                         data-kt-search-enter="enter" data-kt-search-layout="inline">
 
                         <!--begin::Form-->
-                        <form data-kt-search-element="form" class="w-100 position-relative mb-5" autocomplete="off">
+                        <form   class="w-100 position-relative mb-5" autocomplete="off">
                             <!--begin::Hidden input(Added to disable form autocomplete)-->
                             <input type="hidden" />
                             <!--end::Hidden input-->
@@ -9355,7 +9351,7 @@ List Projets
 
                             <!--begin::Input-->
                             <input type="text" class="form-control form-control-lg form-control-solid px-15"
-                                name="search" value="" placeholder="Search by username, full name or email..."
+                                name="search" value="" formControlName="equipe" 
                                 data-kt-search-element="input" />
                             <!--end::Input-->
 
@@ -9366,12 +9362,7 @@ List Projets
                             </span>
                             <!--end::Spinner-->
 
-                            <!--begin::Reset-->
-                            <span
-                                class="btn btn-flush btn-active-color-primary position-absolute top-50 end-0 translate-middle-y lh-0 me-5 d-none"
-                                data-kt-search-element="clear">
-                                <i class="ki-duotone ki-cross fs-2 fs-lg-1 me-0"><span class="path1"></span><span
-                                        class="path2"></span></i> </span>
+                           
                             <!--end::Reset-->
                         </form>
                         <!--end::Form-->
@@ -10452,13 +10443,7 @@ List Projets
                             </select>
     
                         </div>
-                        <div class="fv-row mb-7">
-                            <label class="required fw-semibold fs-6 mb-2">Tache</label>
-                            <select formControlName="tache"  class="form-control">
-                                <option *ngFor="let tache of Listtache" [value]="tache.id">{{tache.discription}}</option>
-                            </select>
-    
-                        </div>
+                       
                     </div>
                    
                          <div class="modal-footer">

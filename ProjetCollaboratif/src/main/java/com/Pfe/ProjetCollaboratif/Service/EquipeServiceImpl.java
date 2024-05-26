@@ -10,8 +10,8 @@ import com.Pfe.ProjetCollaboratif.Repository.EquipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+
 @Service
 public class EquipeServiceImpl implements EquipeService {
     @Autowired
@@ -22,10 +22,32 @@ public class EquipeServiceImpl implements EquipeService {
     public Equipe ajouterEquipe(SaveDeveloppeurEquipe module) {
         Equipe eq = SaveDeveloppeurEquipe.toEntity(module);
         System.out.println("idDeveloppeur" + module.getIdDeveloppeurs());
-        Developpeurs dev = developpeursRepository.findById(module.getIdDeveloppeurs()).get();
-        eq.setDeveloppeurs(dev);
+
+        // Récupérer tous les identifiants de développeurs
+        List<Long> idDeveloppeurs = module.getIdDeveloppeurs();
+
+        // Créer une liste pour stocker les développeurs
+        List<Developpeurs> devs = new ArrayList<>();
+
+        // Boucler sur chaque identifiant de développeur pour les récupérer depuis la base de données
+        for (Long id : idDeveloppeurs) {
+            Optional<Developpeurs> optionalDev = developpeursRepository.findById(id);
+            if (optionalDev.isPresent()) {
+                devs.add(optionalDev.get());
+            } else {
+                // Gérer le cas où un développeur avec l'ID spécifié n'existe pas
+                // Vous pouvez lever une exception ou gérer autrement cette situation
+                System.out.println("Le développeur avec l'ID " + id + " n'existe pas.");
+            }
+        }
+
+        // Ajouter les développeurs récupérés à l'équipe
+        eq.setDeveloppeurs(new HashSet<>(devs));
+
+        // Enregistrer l'équipe avec les développeurs associés
         return equipeRepository.save(eq);
     }
+
 
     @Override
     public Equipe modifierEquipe(Equipe equipe) {

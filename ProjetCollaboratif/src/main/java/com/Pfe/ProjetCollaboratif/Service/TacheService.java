@@ -7,9 +7,10 @@ import java.util.List;
 import java.util.Optional;
 
 public interface TacheService {
-    Tache ajouterTache(SaveTacheDeveloppeur module);
+    Tache ajouterTache(SaveTacheDeveloppeur tache);
     Tache modifierTache(Tache tache);
     List<Tache> getTache();
     void supprimerTache(Long id);
     Optional<Tache> getTache(Long id);
+
 }

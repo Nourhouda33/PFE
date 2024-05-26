@@ -13,8 +13,8 @@ import { ModifierDeveloppeurComponent } from './modifier-developpeur/modifier-de
 import { FichierComponent } from './fichier/fichier.component';
 import { ContactComponent } from './contact/contact.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { TodoComponent } from './todo/todo.component';
 import { EquipeComponent } from './equipe/equipe.component';
+import { TodoComponent } from './todo/todo.component';
 
 const routes: Routes = [
   {path:'Login',component :LoginComponent},
@@ -23,12 +23,11 @@ const routes: Routes = [
   {path:'Developpeurs',component:DeveloppeursComponent,canActivate:[AuthGuard]},
   {path:'ResetMdpDev',component:ResetMdpDevComponent},
   {path:'ModifierProjet/:id',component:ModifierProjetComponent,canActivate:[AuthGuard]},
-  {path:'ModifierDev/:id',component:ModifierDeveloppeurComponent,canActivate:[AuthGuard]},
-
+  {path:'ModifierDev/:id',component:TodoComponent},
   {path:'Fichier',component:FichierComponent ,canActivate:[AuthGuard]},
   {path:'profile',component:ProfilComponent ,canActivate:[AuthGuard]},
   {path:'contact',component:ContactComponent ,canActivate:[AuthGuard]},
-  {path:'tâches',component:TodoComponent ,canActivate:[AuthGuard]},
+  {path:'tâches/:id',component:TodoComponent ,canActivate:[AuthGuard]},
   {path:'Equipe',component:EquipeComponent, canActivate:[AuthGuard]},
 
 

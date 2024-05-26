@@ -67,6 +67,7 @@ import { EquipeComponent } from './equipe/equipe.component';
     MatIconModule,
     MatButtonModule,
     DragDropModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

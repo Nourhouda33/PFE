@@ -1,10 +1,10 @@
 export class SaveTacheDeveloppeur{
     constructor(
         public id ?: number,
-        public discription?:String,
-       
-        public status?: String,
-        public idDeveloppeurs?:number,
+        public nom?: String,
+       public date?:Date,
+        public idProjet?:number,
+
         
     ){}
 }

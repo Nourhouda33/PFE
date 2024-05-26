@@ -2,6 +2,7 @@ package com.Pfe.ProjetCollaboratif.RestController;
 
 import com.Pfe.ProjetCollaboratif.Beans.SaveProjetEquipe;
 import com.Pfe.ProjetCollaboratif.Entity.Projet;
+import com.Pfe.ProjetCollaboratif.Entity.Tache;
 import com.Pfe.ProjetCollaboratif.Repository.ProjetRepository;
 import com.Pfe.ProjetCollaboratif.Service.ProjetService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,10 @@ public class ProjetRestController {
     public Projet AjouterProjet(@RequestBody SaveProjetEquipe model){
         return projetService.ajouterProjet(model);
     }
-
+    @RequestMapping("getAllDeveloppeurs/{id}")
+    public List<Projet> ListDeveloppeursbyProjet(@PathVariable Long id){
+        return projetService.getEquipeByProjet(id);
+    }
     @RequestMapping(method = RequestMethod.GET)
     public List<Projet> AfficherProjet(){
         return  projetService.getProjet();

@@ -13,4 +13,6 @@ public interface ProjetService {
     List<Projet> getProjet();
     void supprimerFichier(Long id);
     Optional<Projet> getProjet(Long id);
+
+    List<Projet> getEquipeByProjet(Long id);
 }

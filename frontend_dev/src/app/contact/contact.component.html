@@ -2,7 +2,7 @@
 <html lang="en">
 
 
-<!-- Mirrored from shreethemes.in/bizcell/layouts/page-contact-one.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Mar 2024 22:36:40 GMT -->
+<!-- Mirrored from shreethemes.in/bizcell/layouts/page-contact-one.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Mar 2024 22:27:28 GMT -->
 <head>
     <meta charset="utf-8" />
     <title>Bizcell - Landing Page Template</title>
@@ -18,9 +18,16 @@
 </head>
 
 <body>
-
+    <!-- <div id="preloader">
+        <div id="status">
+            <div class="spinner">
+                <div class="cube1"></div>
+                <div class="cube2"></div>
+            </div>
+        </div>
+    </div> -->
      <!-- Navbar STart -->
-     <app-header></app-header>
+  <app-header></app-header>
     <!--end header-->
     <!-- Navbar End -->
 
@@ -32,13 +39,12 @@
                     <div class="row align-items-center">
                         <div class="col-12">
                             <div class="text-center">
-                                <h3 class="title-pager mb-0"> Contact </h3>
+                                <h3 class="title-pager mb-0"> Contacter Nous ! </h3>
                             </div>
                             <ul class="page-next text-center mt-4 pt-2">
-                                <li><a href="/" class="text-dark fs-6">CollabPro</a></li> 
-                                <li>
-                                    <span class="text-primary fs-6">Contact</span>
-                                </li>
+                                <li><a href="index.html" class="text-dark fs-6">Bizcell</a></li> 
+                                <li><a href="#" class="text-dark fs-6">Contact</a></li>                              
+                               
                             </ul>
                         </div>
                         <!--end col-->
@@ -61,16 +67,16 @@
                     <div class="card shadow rounded border-0 p-2">
                         <div class="card-body">
                             <div class="primary-form mt-3">
-                                <form method="post" id="myForm" name="myForm" (ngSubmit)="AddContact()" [formGroup]="ContactForm">
+                                <form (ngSubmit)="addNewContact()" [formGroup]="ContactForm">
                                     <p class="mb-0" id="error-msg"></p>
                                     <div id="simple-msg"></div>
                                     <div class="row">
                                         <div class="col-12 mb-3">
-                                            <h4 class="">Get In Touch !</h4>
+                                            <h4 class="">Contacter Nous !</h4>
                                             
                                         </div>
                                         <div class="col-md-6">
-                                            <label class="form-label fs-6 mt-3 mb-1">Votre Nom:<span
+                                            <label class="form-label fs-6 mt-3 mb-1">Votre nom <span
                                                     class="text-danger">*</span></label>
                                             <div class="form-icon position-relative">
                                                 <i class="mdi mdi-account icon-sm icons"></i>
@@ -78,60 +84,57 @@
                                                     placeholder="Nom :">
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <label class="form-label fs-6 mt-3 mb-1">Votre Prenom:<span
-                                                    class="text-danger">*</span></label>
-                                            <div class="form-icon position-relative">
-                                                <i class="mdi mdi-account icon-sm icons"></i>
-                                                <input  formControlName="prenom" id="name" type="text" class="form-control ps-5 fs-6"
-                                                    placeholder="Prenom :">
-                                            </div>
-                                        </div>
-
 
                                         <div class="col-md-6">
 
-                                            <label class="form-label fs-6 mt-3 mb-1">Votre Email: <span
+                                            <label class="form-label fs-6 mt-3 mb-1">Votre prenom <span
                                                     class="text-danger">*</span></label>
                                             <div class="form-icon position-relative">
                                                 <i class="mdi mdi-email-outline icon-sm icons"></i>
-                                                <input name="email" formControlName="email" id="email" type="email"
-                                                    class="form-control ps-5 fs-6" placeholder="Email :">
+                                                <input formControlName="prenom" name="email" id="email" type="text"
+                                                    class="form-control ps-5 fs-6" placeholder="prenom :">
                                             </div>
 
                                         </div>
                                         <!--end col-->
-
                                         <div class="col-12">
-                                            <label class="form-label fs-6 mt-3 mb-1">Sujet</label>
+                                            <label class="form-label fs-6 mt-3 mb-1">Votre email</label>
                                             <div class="form-icon position-relative">
                                                 <i class="mdi mdi-book-outline icon-sm icons"></i>
-                                                <input name="subject" id="subject"  formControlName="sujet" class="form-control ps-5 fs-6"
-                                                    placeholder="sujet :">
+                                                <input formControlName="email" name="subject" id="subject" class="form-control ps-5 fs-6"
+                                                    placeholder="Email :">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label class="form-label fs-6 mt-3 mb-1">Votre sujet</label>
+                                            <div class="form-icon position-relative">
+                                                <i class="mdi mdi-book-outline icon-sm icons"></i>
+                                                <input formControlName="sujet" name="subject" id="subject" class="form-control ps-5 fs-6"
+                                                    placeholder="Sujet :">
                                             </div>
                                         </div>
                                         <!--end col-->
-                                        <div class="col-12">
-                                            <label class="form-label fs-6 mt-3 mb-1">Phone</label>
-                                            <div class="form-icon position-relative">
-                                                <i class="mdi mdi-book-outline icon-sm icons"></i>
-                                                <input name="phone" id="phone"  formControlName="phone" class="form-control ps-5 fs-6" type="text"
-                                                    placeholder="Phone :">
-                                            </div>
-                                        </div>
 
                                         <div class="col-12">
                                             <label class="form-label fs-6 mt-3 mb-1">Message <span
                                                     class="text-danger">*</span></label>
                                             <div class="form-icon position-relative">
                                                 <i class="mdi mdi-message-outline icon-sm icons"></i>
-                                                <textarea name="message" id="comments" rows="4" formControlName="message"
+                                                <textarea formControlName="message" name="comments" id="comments" rows="4"
                                                     class="form-control ps-5 fs-6" placeholder="Message :"></textarea>
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- end row -->
+                                    <div class="row">
+                                        <div class="col-12 fs-6 mt-3">
+                                            <button type="submit" id="submit" name="send" class="btn btn-primary">Envoyer un
+                                                message</button>
+                                        </div>
                                         <!--end col-->
-
+                                    </div>
+                                    <!--end row-->
                                 </form>
                                 <!-- end form -->
 
@@ -144,17 +147,16 @@
 
                 <div class="col-lg-6 col-md-6 order-1 order-md-2 mt-3 pt-2">
                     <div class="title-heading ms-lg-4">
-                        <h4 class="title text-capitalize"> Prêt à travailler avec nous ?
-                        </h4>
-                        <p class="para-desc text-muted mx-auto">Nous sommes tellement excités et fiers de notre entreprise. Il est très simple de créer une page de destination pour votre formidable entreprise.
-                        </p>
+                        <h4 class="title text-capitalize">Ready to work with us ?</h4>
+                        <p class="para-desc text-muted mx-auto">We are so excited and proud of our business. It's
+                            really easy to create a landing page for your awesome business.</p>
                         <div class="d-flex contact-detail align-items-center mt-3 pt-2">
                             <div class="icon float-start me-4">
                                 <i class="mdi mdi-email text-primary d-block rounded-pill h3 mb-0"></i>
                             </div>
                             <div class="flex-1 content">
                                 <h5 class="title fw-bold mb-1">Email</h5>
-                                <p class="mb-0 text-muted"><span class="fw-bold">E-mail :</span> Houdanourjarboui@gmail.com
+                                <p class="mb-0 text-muted"><span class="fw-bold">E-mail :</span> sample@yourdomain.com
                                 </p>                                
                             </div>
                         </div>
@@ -164,8 +166,8 @@
                                 <i class="mdi mdi-phone text-primary d-block rounded-pill h3 mb-0"></i>
                             </div>
                             <div class="flex-1 content">
-                                <h5 class="title fw-bold mb-1">Appelle maintenant</h5>
-                                <p class="mb-0 text-muted"><span class="fw-bold">Phone :</span> 29885331
+                                <h5 class="title fw-bold mb-1">Call Now</h5>
+                                <p class="mb-0 text-muted"><span class="fw-bold">Phone :</span> +1 9849-657-847
                                 </p>
                             </div>
                         </div>
@@ -175,8 +177,9 @@
                                 <i class="mdi mdi-map-marker text-primary d-block rounded-pill h3 mb-0"></i>
                             </div>
                             <div class="flex-1 content">
-                                <h5 class="title fw-bold mb-1">Où trouver</h5>
-                                <p class="mb-0 text-muted"><span class="fw-bold">Adresse :</span> R7W8+P5G, Rue De L'Ile De Tasmanie،, Tunis</p>
+                                <h5 class="title fw-bold mb-1">Where To Find</h5>
+                                <p class="mb-0 text-muted"><span class="fw-bold">Address :</span> 245 S Last Street Ave,
+                                    Washington, CA 90022, USA</p>
                             </div>
                         </div>
                     </div>
@@ -185,15 +188,79 @@
             </div>
             <!--end row-->
         </div>
-      
+        <!--end container-->
+
+        <div class="container-fluid mt-md-5 pt-md-5 mt-4 mt-sm-0 pt-2 pt-sm-0">
+            <div class="row">
+                <div class="col-lg-12 p-0">
+                    <div class="map contact-map">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26450.703875827203!2d-118.17714508359843!3d34.035200272995354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2cf71ad83ff9f%3A0x518b28657f4543b7!2sEast+Los+Angeles%2C+CA%2C+USA!5e0!3m2!1sen!2smx!4v1558185841201!5m2!1sen!2smx"
+                            width="600" height="450" style="border:0" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <!--end col-->
+            </div>
+            <!--end row-->
+        </div>
+        <!--end container fluid-->
     </section>
     <!--end section-->
     <!-- contact END -->
 
+    <!-- Partner Start -->
+    <section class="section-two">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="tiny-five-item">
+                        <div class="tiny-slide">
+                            <img src="images/testi/01.png" class="img-fluid mx-auto d-block" alt="clients">
+                        </div>
+                        <div class="tiny-slide">
+                            <img src="images/testi/02.png" class="img-fluid mx-auto d-block" alt="clients">
+                        </div>
+                        <div class="tiny-slide">
+                            <img src="images/testi/02.png" class="img-fluid mx-auto d-block" alt="clients">
+                        </div>
+                        <div class="tiny-slide">
+                            <img src="images/testi/03.png" class="img-fluid mx-auto d-block" alt="clients">
+                        </div>
+                        <div class="tiny-slide">
+                            <img src="images/testi/04.png" class="img-fluid mx-auto d-block" alt="clients">
+                        </div>
+                        <div class="tiny-slide">
+                            <img src="images/testi/05.png" class="img-fluid mx-auto d-block" alt="clients">
+                        </div>
+                        <div class="tiny-slide">
+                            <img src="images/testi/06.png" class="img-fluid mx-auto d-block" alt="clients">
+                        </div>
+                        <div class="tiny-slide">
+                            <img src="images/testi/07.png" class="img-fluid mx-auto d-block" alt="clients">
+                        </div>
+                        <div class="tiny-slide">
+                            <img src="images/testi/08.png" class="img-fluid mx-auto d-block" alt="clients">
+                        </div>
+                        <div class="tiny-slide">
+                            <img src="images/testi/09.png" class="img-fluid mx-auto d-block" alt="clients">
+                        </div>
+                        <div class="tiny-slide">
+                            <img src="images/testi/10.png" class="img-fluid mx-auto d-block" alt="clients">
+                        </div>
+                    </div>
+                </div>
+                <!--end col-->
+            </div>
+            <!--end row-->
+        </div>
+        <!--enn container-->
+    </section>
+    <!--end section-->
     <!-- Partner End -->
 
     <!-- Footer Start -->
    <app-footer></app-footer>
+    <!--end footer-->
     <!-- Footer End -->
 
     <!-- Style switcher -->
@@ -241,11 +308,9 @@
     <a href="#" class="back-to-top rounded-pill text-center" id="back-to-top">
         <i class="mdi mdi-chevron-up d-block"> </i>
     </a>
-    <!-- Back to top -->
-
     
 </body>
 
 
-<!-- Mirrored from shreethemes.in/bizcell/layouts/page-contact-one.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Mar 2024 22:36:40 GMT -->
+<!-- Mirrored from shreethemes.in/bizcell/layouts/page-contact-one.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 17 Mar 2024 22:27:28 GMT -->
 </html>

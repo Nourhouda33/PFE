@@ -130,8 +130,9 @@ export class DeveloppeursComponent {
           detail: 'Succes Message',
           summary: 'developpeurs est Envoyé avec succès',
         });
-        this.router.navigate(['/Developpeurs']).then(() => [window.location.reload()]);
-      },
+        this.service.getDeveloppeurs().subscribe(projet => {
+          this.ListDeveloppeurs = projet
+        })      },
       err => {
         console.log(err);
         this.toast.error({
@@ -142,18 +143,7 @@ export class DeveloppeursComponent {
     );
   }
   
-  //supprimer
-  DeleteDeveloppeur(developpeurs: Developpeurs){
-    if(confirm("Voulez vous supprimer cet developpeurs avec l'ID " + developpeurs.id + " ?")) {
-     
-      this.service.onDeleteDeveloppeurs(developpeurs.id).subscribe(() => {
-        this.router.navigate(['/Developpeurs']).then(() => {
-          window.location.reload()
-        })
-      })
-   
-    }
-  }
+ 
 
   //modifierDeveloppeurs
  
@@ -184,6 +174,7 @@ export class DeveloppeursComponent {
           this.ListDeveloppeurs[index]=newDeveloppeurs
           },
           err=>console.log(err)
+          
         )
           }
          

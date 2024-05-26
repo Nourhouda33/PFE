@@ -3,7 +3,7 @@ export class SaveDeveloppeurEquipe{
         public id ?: number,
         public nom?:String,
         public discription?: String,
-        public idDeveloppeurs?:number,
+        public idDeveloppeurs?:number[],
         
     ){}
 }

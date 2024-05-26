@@ -1,4 +1,4 @@
-<div id="kt_app_header" class="app-header ">
+<div id="kt_app_header" class="app-header">
     <div class="app-container  container-fluid d-flex align-items-stretch justify-content-between "
         id="kt_app_header_container">
         <!--begin::Header mobile toggle-->
@@ -11,10 +11,12 @@
         <!--end::Header mobile toggle-->
 
         <!--begin::Logo-->
-        <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0 me-5 me-lg-0">
+        <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0 me-5 me-lg-0" >
             <a href="../index.html">
-                <img alt="Logo" src="../assets/media/logos/demo46.svg" class="d-none d-sm-block" />
-                <img alt="Logo" src="../assets/media/logos/demo46-small.svg" class="d-block d-sm-none" />
+                <img style="    width: 160px;
+                position: relative;
+                top: 9px;" alt="Logo" src="../assets/media/logos/Digital.png" class="d-none d-sm-block" />
+                <img alt="Logo" src="../assets/media/logos/Digital.png" class="d-block d-sm-none" />
             </a>
         </div>
         <!--end::Logo-->
@@ -70,12 +72,6 @@
 
                               <!--end:Pages menu-->
                 </div><!--end:Menu sub-->
-                    </div><!--end:Menu item--><!--begin:Menu item-->
-                    <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start"
-                        class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention me-0 me-lg-2">
-                        <!--begin:Menu link--><a href='/Projet' class="menu-link">Projets</a><span
-                                class="menu-arrow d-lg-none"></span><!--end:Menu link--><!--begin:Menu sub-->
-
                     </div><!--end:Menu item-->
                     <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start"
                     class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention me-0 me-lg-2">
@@ -83,13 +79,14 @@
                             class="menu-arrow d-lg-none"></span><!--end:Menu link--><!--begin:Menu sub-->
 
                 </div><!--end:Menu item-->
-                <!--end:Menu item-->
-                <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start"
-                class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention me-0 me-lg-2">
-                <!--begin:Menu link--><a href='/tâches' class="menu-link">Tâches</a><span
-                        class="menu-arrow d-lg-none"></span><!--end:Menu link--><!--begin:Menu sub-->
+                    <!--begin:Menu item-->
+                    <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start"
+                        class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention me-0 me-lg-2">
+                        <!--begin:Menu link--><a href='/Projet' class="menu-link">Projets</a><span
+                                class="menu-arrow d-lg-none"></span><!--end:Menu link--><!--begin:Menu sub-->
 
-            </div><!--end:Menu item-->
+                    </div><!--end:Menu item-->
+                
                 </div>
                 <!--end::Menu-->
             </div>
@@ -238,11 +235,7 @@
                                                     <a href="#"
                                                         class="fs-4 text-purpul-900 text-hover-primary fw-bold" style="color:blueviolet">{{contact.email}}
                                                         </a>
-                                                        
-                                                        <div class="py-3 text-center border-top">
-                                                    <div class="fs-5 text-gray-900 text-hover-primary">{{contact.sujet}}</div>
-                                                   </div>
-                                                    
+                                                        {{contact.sujet}}
                                                 </td> </tr>
                                                 </div>
                                                
